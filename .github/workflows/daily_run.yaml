@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  trading:
+  scraping:
     runs-on: ubuntu-latest
 
     steps:
