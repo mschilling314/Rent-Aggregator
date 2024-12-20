@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+beautiful-soup = "*"
+sqlite3 = "*"
+datetime = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
+
+[scripts]
+wpescrape = "python wpescraper.py"
+orchestrate = "python main.py

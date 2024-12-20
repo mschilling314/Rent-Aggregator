@@ -1,0 +1,40 @@
+name: Daily Querying Workflow
+
+on:
+  workflow_dispatch
+  # schedule:
+  #   - cron: '0 0 * * *'  # Run daily at midnight (adjust as needed)
+
+
+jobs:
+  trading:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Retrieve GitHub PAT
+        run: |
+          GH_TOKEN=${{ secrets.REPO_PAT }}
+
+      - name: Run program
+        run: |
+          python main.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.email "mschilling52019@gmail.com"
+          git config user.name "MattBot"
+          git add data/wpe.sqlite
+          git add logs/app.log
+          git commit -m "$(Date) Run"
+          git push origin main
