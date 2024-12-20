@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 from typing import Callable
+import concurrent.futures
 
 from DataClasses.Unit import Unit
 from DataClasses.FloorPlan import FloorPlan
@@ -31,8 +32,6 @@ def get_floor_plans() -> list[FloorPlan]:
     # First, need to get response from WPE Website, something like:
     base_url = "https://wolfpointeast.com/floor-plans/?bedroom=&availability=&sqft=&max-price=&pagenumber="
     response_text = get_paginated_response_text(base_url=base_url, end_condition=lambda x: "Your search didn't return any results. Please adjust your options above." in x)
-    with open("response.txt", "w") as f:
-        f.writelines(response_text)
     
     # now that we have the response text, we need to parse with beautiful soup
     soup = BeautifulSoup(response_text, "html.parser")
@@ -118,13 +117,18 @@ def scrape():
     Scrapes the rentwpe.com site, puts results in two tables in SQLite DB for WPE.
     """
     floor_plans = get_floor_plans()
-    units = []
-    for floor_plan in floor_plans:
-        units.extend(get_units(floor_plan_id=floor_plan.get_id()))
-
-    # with open("response.txt", "w") as f:
-    #     for unit in units:
-    #         f.write(f"{unit}\n")
+   
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        # Start concurrent fetching of units for each floor plan
+        future_to_floor_plan = {executor.submit(get_units, floor_plan.get_id()): floor_plan for floor_plan in floor_plans}
+        
+        units = []
+        for future in concurrent.futures.as_completed(future_to_floor_plan):
+            floor_plan = future_to_floor_plan[future]
+            try:
+                units.extend(future.result())  # Add the units for this floor plan to the list
+            except Exception as exc:
+                print(f"Error fetching units for floor plan {floor_plan.get_id()}: {exc}")
         
     conn = sqlite3.connect("data/wpe.sqlite")
     cursor = conn.cursor()
