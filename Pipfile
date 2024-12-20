@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 requests = "*"
 beautiful-soup = "*"
-sqlite3 = "*"
 datetime = "*"
 
 [dev-packages]
