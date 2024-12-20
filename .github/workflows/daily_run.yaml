@@ -33,5 +33,5 @@ jobs:
           git config user.name "MattBot"
           git add data/wpe.sqlite
           git add logs/app.log
-          git commit -m "$(Date) Run"
+          git commit -m "$(date) Run"
           git push origin main
