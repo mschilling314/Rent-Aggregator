@@ -20,6 +20,10 @@ def main():
         if price_increases:
             units_str = ", ".join(map(str, price_increases))
             logging.info(f"Price increases detected for these units: {units_str}")
+        new_units = analyze.return_new_units(units=units)
+        if new_units:
+            units_str = ", ".join(map(str, new_units))
+            logging.info(f"Units new to the market: {units_str}")
     except Exception as e:
         logging.fatal(f"Analysis failed due to {e}.  Please try again.")
 

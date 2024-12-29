@@ -27,22 +27,6 @@ def get_average_rent_df_for_floor_plans(floor_plans: pd.DataFrame, units: pd.Dat
     return ps.sqldf(query, locals())
 
 
-def find_cheap_units(units: pd.DataFrame, average_price_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Returns a dataframe of the units that are cheaper than average.
-    """
-    query = """
-            SELECT units.d
-            """
-
-
-def find_expensive_units(units: pd.DataFrame, average_price_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Returns a dataframe of the units that are more expensive than average.
-    """
-    pass
-
-
 def find_price_drops(units: pd.DataFrame) -> list[str]:
     """
     Returns a list of units whose price has dropped.
@@ -85,9 +69,25 @@ def find_price_increases(units: pd.DataFrame) -> list[str]:
     result_df = ps.sqldf(query, locals())
     return list(result_df["unit_number"])
 
+
+def return_new_units(units: pd.DataFrame) -> list[str]:
+    """
+    Return a list of units that are new to the market.
+    """
+    units["date_of_update"] = pd.to_datetime(units["date_of_update"])
+
+    most_recent = units["date_of_update"].max()
+    yesterday = most_recent - datetime.timedelta(days=1)
+
+    todays_units = units[units["date_of_update"] == most_recent]
+    yesterday_units = units[units["date_of_update"] == yesterday]
+
+    new_units = todays_units[~todays_units["unit_number"].isin(yesterday_units["unit_number"])]
+    return new_units["unit_number"].to_list()
+
 if __name__ == "__main__":
     db_path = "data/wpe.sqlite"
     conn = sqlite3.connect(db_path)
     units = get_table_df(connection=conn, table="Units")
 
-    print(find_price_increases(units))
+    print(return_new_units(units))
