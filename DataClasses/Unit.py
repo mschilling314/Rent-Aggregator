@@ -23,6 +23,9 @@ class Unit:
     
 
     def insert_into_sqlite(self, cursor: sqlite3.Cursor) -> None:
+        """
+        Inserts a Unit object into a SQLite database.
+        """
         cursor.execute("SELECT 1 FROM Units WHERE unit_number=? AND date_of_update=?", (self.unit_number, self.date_of_update))
         if cursor.fetchone() is not None:
             return

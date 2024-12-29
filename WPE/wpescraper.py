@@ -10,6 +10,9 @@ from DataClasses.FloorPlan import FloorPlan
 
 
 def get_paginated_response_text(base_url: str, end_condition: Callable[[str], str], starting_page: int=0) -> str:
+    """
+    Joins paginated response results after calling the given URL, returns the string representation of the webpages.
+    """
     page = starting_page
     response_text = []
     while True:
@@ -29,6 +32,9 @@ def get_paginated_response_text(base_url: str, end_condition: Callable[[str], st
 
 
 def get_floor_plans() -> list[FloorPlan]:
+    """
+    Gets a list of FloorPlans.
+    """
     # First, need to get response from WPE Website, something like:
     base_url = "https://wolfpointeast.com/floor-plans/?bedroom=&availability=&sqft=&max-price=&pagenumber="
     response_text = get_paginated_response_text(base_url=base_url, end_condition=lambda x: "Your search didn't return any results. Please adjust your options above." in x)
@@ -62,6 +68,9 @@ def get_floor_plans() -> list[FloorPlan]:
 
 
 def get_units(floor_plan_id: int) -> list[Unit]:
+    """
+    Gets a list of units given the floor plan ID.
+    """
     base_url = f"https://wolfpointeast.com/floor-plans/{floor_plan_id}?pagenumber="
     response_text = get_paginated_response_text(base_url=base_url, end_condition=lambda x: "class=\"plan-details\"" not in x)
     soup = BeautifulSoup(response_text, "html.parser")
@@ -88,6 +97,9 @@ def get_units(floor_plan_id: int) -> list[Unit]:
     return unit_list
 
 def create_floor_plan_table(cursor: sqlite3.Cursor) -> None:
+    """
+    Creates the table for the floor plans if it doesn't exist.
+    """
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS FloorPlans (
         floor_plan_id INTEGER PRIMARY KEY,
@@ -100,6 +112,9 @@ def create_floor_plan_table(cursor: sqlite3.Cursor) -> None:
     ''')
 
 def create_unit_table(cursor: sqlite3.Cursor) -> None:
+    """
+    Creates the table for the units if it doesn't exist.
+    """
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS Units (
                    unit_number TEXT,

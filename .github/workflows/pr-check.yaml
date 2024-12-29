@@ -1,0 +1,30 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches:
+      - main  # This will run the check on PRs targeting the `main` branch.
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Use a fresh Ubuntu environment for each run.
+
+    steps:
+      # Checkout the code from the PR
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Run tests (assuming pytest is used, adjust if you're using a different test framework)
+      - name: Run tests
+        run: |
+          pytest
