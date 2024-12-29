@@ -6,7 +6,7 @@ class Unit:
     Class that provides the ability to interact with apartment unit objects Pythonically.
     """
 
-    def __init__(self, unit_number: str, floor_plan_id: int, price: float, date_available: str) -> None:
+    def __init__(self, unit_number: str, floor_plan_id: int, price: float, date_available: str="Now") -> None:
         self.unit_number = unit_number
         self.floor_plan_id = floor_plan_id # foreign key in FloorPlan table
         self.price = price
@@ -16,7 +16,7 @@ class Unit:
 
     
     def __str__(self) -> str:
-        return f"\nUnit {self.unit_number} is ${self.price:.2f} as of {self.date_of_update}.  It will be available on {self.date_available}."
+        return f"\nUnit {self.unit_number} is ${self.price:.2f} as of {self.date_of_update}.  It will be available {self.date_available}."
     
 
     def __repr__(self) -> str:

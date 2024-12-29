@@ -92,8 +92,9 @@ def get_units(floor_plan_id: int) -> list[Unit]:
             price = float("".join(price_str.split(",")))
         elif "CALL FOR PRICING" in unit.text:
             price = 0
-        unit_list.append(Unit(unit_number=unit_number, floor_plan_id=floor_plan_id, price=price))
-    
+        date_available = str(unit.find_all("li")[-1].find("span"))[6:-7]
+        
+        unit_list.append(Unit(unit_number=unit_number, floor_plan_id=floor_plan_id, price=price, date_available=date_available))
     return unit_list
 
 def create_floor_plan_table(cursor: sqlite3.Cursor) -> None:
@@ -162,3 +163,4 @@ def scrape():
 
 if __name__=="__main__":
     scrape()
+    
