@@ -3,24 +3,7 @@ import sqlite3
 import pandas as pd
 import pandasql as ps
 
-from DataClasses.Unit import Unit
-from DataClasses.FloorPlan import FloorPlan
-
-
-def get_table_df(connection: sqlite3.Connection, table: str) -> pd.DataFrame:
-    sql_query = f"SELECT * FROM {table}"
-    return pd.read_sql_query(sql = sql_query, con = connection)
-
-
-def get_average_rent_df_for_floor_plans(floor_plans: pd.DataFrame, units: pd.DataFrame) -> pd.DataFrame:
-    query = """
-            SELECT units.date_of_update AS date, floor_plans.name, AVG(units.price) as price
-            FROM units
-            JOIN floor_plans
-            ON units.floor_plan_id = floor_plans.floor_plan_id
-            GROUP BY units.date_of_update, units.floor_plan_id
-            """
-    return ps.sqldf(query, locals())
+from analysis.analyze import get_table_df, get_average_rent_df_for_floor_plans
 
 
 def graph_price_per_day(df: pd.DataFrame, floor_plan_name: str="A21", xaxis: str="Date", yaxis: str="Price", title: str="Price per Day") -> None:
@@ -51,6 +34,6 @@ if __name__=="__main__":
     units = get_table_df(conn, "Units")
     
     average_rent_by_floor_plan = get_average_rent_df_for_floor_plans(floor_plans=floor_plans, units=units)
-    
+
     print_price_per_day_for_floor_plan(average_rent_by_floor_plan, "A+D-2")
     graph_price_per_day(average_rent_by_floor_plan, yaxis="Average Price", floor_plan_name="A+D-2")
