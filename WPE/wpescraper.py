@@ -122,6 +122,7 @@ def create_unit_table(cursor: sqlite3.Cursor) -> None:
                    floor_plan_id INTEGER,
                    price REAL,
                    date_of_update TEXT,
+                   date_available TEXT,
                    PRIMARY KEY (unit_number, date_of_update),
                    FOREIGN KEY (floor_plan_id) REFERENCES FloorPlans(floor_plan_id)
                    )
