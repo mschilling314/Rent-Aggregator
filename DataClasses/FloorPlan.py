@@ -25,9 +25,15 @@ class FloorPlan():
         
     
     def get_id(self) -> int:
+        """
+        Returns the ID of the floor plan.
+        """
         return self.floor_plan_id
     
     def insert_into_sqlite(self, cursor: sqlite3.Cursor) -> None:
+        """
+        Inserts a FloorPlan object into a SQLite table.
+        """
         cursor.execute("SELECT 1 FROM FloorPlans WHERE floor_plan_id = ?", (self.floor_plan_id,))
         if cursor.fetchone() is not None:
             return
