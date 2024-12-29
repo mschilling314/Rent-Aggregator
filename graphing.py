@@ -19,5 +19,5 @@ if __name__=="__main__":
     
     average_rent_by_floor_plan = get_average_rent_df_for_floor_plans(floor_plans=floor_plans, units=units)
 
-    print_price_per_day_for_floor_plan(average_rent_by_floor_plan, "A+D-2")
-    graph_price_per_day(average_rent_by_floor_plan, yaxis="Average Price", floor_plan_name="A+D-2")
+    print_price_per_day_for_floor_plan(average_rent_by_floor_plan, "S3")
+    graph_price_per_day(average_rent_by_floor_plan, yaxis="Average Price", floor_plan_name="S3")
