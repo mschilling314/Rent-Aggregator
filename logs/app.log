@@ -173,3 +173,7 @@
 2025-02-07 01:08:24,585 - INFO - Price increases detected for these units: 3107, 808, 3208, 3608, 3812, 4711, 2212, 3813
 2025-02-07 01:08:24,589 - INFO - Units new to the market: 1804
 2025-02-07 01:08:24,589 - INFO - Completed execution of the app.
+2025-02-08 01:05:57,294 - INFO - Beginning execution of the app.
+2025-02-08 01:06:10,810 - INFO - Price increases detected for these units: 4111, 4601, 4711, 808, 3208, 3608, 3812, 2212, 713, 1313, 2713, 3813, 504, 1804, 404, 1001, 2101
+2025-02-08 01:06:10,813 - INFO - Units new to the market: 3805
+2025-02-08 01:06:10,813 - INFO - Completed execution of the app.
