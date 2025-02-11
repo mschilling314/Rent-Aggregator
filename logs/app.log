@@ -186,3 +186,8 @@
 2025-02-10 01:09:27,673 - INFO - Price drops detected for the following units: 4601, 710, 2506, 906, 1206, 2910, 506
 2025-02-10 01:09:27,682 - INFO - Price increases detected for these units: 1401
 2025-02-10 01:09:27,685 - INFO - Completed execution of the app.
+2025-02-11 01:07:46,136 - INFO - Beginning execution of the app.
+2025-02-11 01:07:57,583 - INFO - Price drops detected for the following units: 4601, 4504, 710, 3910, 2506, 906, 1206, 1506, 2910, 1403, 1102, 506, 3805
+2025-02-11 01:07:57,592 - INFO - Price increases detected for these units: 5805, 5604, 1914, 2214, 3614, 2614, 511, 1311, 3107, 2011, 3311, 2711, 4403, 4711, 808, 3208, 3608, 3812, 2212, 713, 1313, 2713, 3813, 504, 1804, 404, 1001, 1401
+2025-02-11 01:07:57,596 - INFO - Units new to the market: 4108, 5507
+2025-02-11 01:07:57,596 - INFO - Completed execution of the app.
