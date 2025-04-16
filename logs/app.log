@@ -460,3 +460,7 @@
 2025-04-15 01:16:47,158 - INFO - Beginning execution of the app.
 2025-04-15 01:16:55,571 - INFO - Price drops detected for the following units: 2711, 3311
 2025-04-15 01:16:55,587 - INFO - Completed execution of the app.
+2025-04-16 01:16:04,080 - INFO - Beginning execution of the app.
+2025-04-16 01:16:17,946 - INFO - Price drops detected for the following units: 2711, 3311
+2025-04-16 01:16:17,963 - INFO - Units new to the market: 2107, 4412, 2403, 3112
+2025-04-16 01:16:17,963 - INFO - Completed execution of the app.
