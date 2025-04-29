@@ -4,8 +4,8 @@ import sqlite3
 from typing import Callable
 import concurrent.futures
 
-from DataClasses.Unit import Unit
-from DataClasses.FloorPlan import FloorPlan
+from DataClasses.Unit import Unit, create_unit_table
+from DataClasses.FloorPlan import FloorPlan, create_floor_plan_table
 
 
 
@@ -97,36 +97,6 @@ def get_units(floor_plan_id: int) -> list[Unit]:
         unit_list.append(Unit(unit_number=unit_number, floor_plan_id=floor_plan_id, price=price, date_available=date_available))
     return unit_list
 
-def create_floor_plan_table(cursor: sqlite3.Cursor) -> None:
-    """
-    Creates the table for the floor plans if it doesn't exist.
-    """
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS FloorPlans (
-        floor_plan_id INTEGER PRIMARY KEY,
-        name TEXT,
-        beds REAL,
-        baths REAL,
-        sq_ft INTEGER,
-        img_url TEXT
-    )
-    ''')
-
-def create_unit_table(cursor: sqlite3.Cursor) -> None:
-    """
-    Creates the table for the units if it doesn't exist.
-    """
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS Units (
-                   unit_number TEXT,
-                   floor_plan_id INTEGER,
-                   price REAL,
-                   date_of_update TEXT,
-                   date_available TEXT,
-                   PRIMARY KEY (unit_number, date_of_update),
-                   FOREIGN KEY (floor_plan_id) REFERENCES FloorPlans(floor_plan_id)
-                   )
-                   ''')
 
 
 def scrape():

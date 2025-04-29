@@ -30,6 +30,7 @@ class FloorPlan():
         """
         return self.floor_plan_id
     
+    
     def insert_into_sqlite(self, cursor: sqlite3.Cursor) -> None:
         """
         Inserts a FloorPlan object into a SQLite table.
@@ -40,3 +41,17 @@ class FloorPlan():
         sql_statement = "INSERT INTO FloorPlans (floor_plan_id, name, beds, baths, sq_ft, img_url) VALUES (?, ?, ?, ?, ?, ?)"
         cursor.execute(sql_statement, (self.floor_plan_id, self.name, self.bedrooms, self.bathrooms, self.sq_ft, self.img_url))
 
+def create_floor_plan_table(cursor: sqlite3.Cursor) -> None:
+    """
+    Creates the table for the floor plans if it doesn't exist.
+    """
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS FloorPlans (
+        floor_plan_id INTEGER PRIMARY KEY,
+        name TEXT,
+        beds REAL,
+        baths REAL,
+        sq_ft INTEGER,
+        img_url TEXT
+    )
+    ''')
