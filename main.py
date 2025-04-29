@@ -1,5 +1,7 @@
 import logging
+import os
 import sqlite3
+from Cascade import cascadeScraper
 
 import WPE.wpescraper as wpescraper
 import analysis.analyze as analyze
@@ -10,16 +12,11 @@ logging.basicConfig(
     handlers=[logging.FileHandler("logs/app.log", mode="a"), logging.StreamHandler()]  # Output to both a file and the console
 )
 
-
-def main():
+def write_to_db(db_path: str):
     """
-    Function executed as primary entrypoint into program.
+    Write to the database, log significant price changes.
     """
-    logging.info("Beginning execution of the app.")
-    wpescraper.scrape()
-
     try:
-        db_path = "data/wpe.sqlite"
         conn = sqlite3.connect(db_path)
         units = analyze.get_table_df(conn, "Units")
         price_decreases = analyze.find_price_drops(units)
@@ -36,6 +33,26 @@ def main():
             logging.info(f"Units new to the market: {units_str}")
     except Exception as e:
         logging.fatal(f"Analysis failed due to {e}.  Please try again.")
+
+
+
+def main():
+    """
+    Function executed as primary entrypoint into program.
+    """
+    logging.info("Beginning execution of the app.")
+
+    apartments = [{"name": "Wolf Point East", "scraper": wpescraper, "db_name": "wpe"},
+                  {"name": "Cascade", "scraper": cascadeScraper, "db_name": "cascade"}]
+    
+    
+    for apartment in apartments:
+        logging.info(f"\nScraping website for {apartment['name']}")
+        apartment["scraper"].scrape()
+        logging.info(f"Writing to database and providing analysis for {apartment['name']}")
+        db_path = os.path.join("data", f"{apartment['db_name']}.sqlite")
+        write_to_db(db_path=db_path)
+    
     logging.info("Completed execution of the app.")
 
 
