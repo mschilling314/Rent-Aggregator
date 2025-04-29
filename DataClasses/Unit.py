@@ -22,6 +22,7 @@ class Unit:
     def __repr__(self) -> str:
         return self.__str__()
     
+    
 
     def insert_into_sqlite(self, cursor: sqlite3.Cursor) -> None:
         """
@@ -32,3 +33,19 @@ class Unit:
             return
         sql_statement = "INSERT INTO Units (unit_number, floor_plan_id, price, date_of_update, date_available) VALUES (?, ?, ?, ?, ?)"
         cursor.execute(sql_statement, (self.unit_number, self.floor_plan_id, self.price, self.date_of_update, self.date_available))
+
+def create_unit_table(cursor: sqlite3.Cursor) -> None:
+    """
+    Creates the table for the units if it doesn't exist.
+    """
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Units (
+                unit_number TEXT,
+                floor_plan_id INTEGER,
+                price REAL,
+                date_of_update TEXT,
+                date_available TEXT,
+                PRIMARY KEY (unit_number, date_of_update),
+                FOREIGN KEY (floor_plan_id) REFERENCES FloorPlans(floor_plan_id)
+                )
+                ''')
