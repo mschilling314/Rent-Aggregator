@@ -1,4 +1,5 @@
 import datetime
+import os
 import requests
 from bs4 import BeautifulSoup
 import sqlite3
@@ -14,7 +15,7 @@ def grab_webpage(url: str="https://cascadeapartments.com/availability") -> Beaut
             return BeautifulSoup(resp.text, "html.parser")
     except:
         logging.ERROR("Failed to get Cascade Apartments website.")
-        raise Exception("Website get failed.")
+        # raise Exception("Website get failed.")
     
 
 def get_floorplans(html: BeautifulSoup) -> list[FloorPlan]:
@@ -59,7 +60,8 @@ def scrape() -> None:
     floorplans = get_floorplans(soup)
     units = get_unit(soup)
 
-    conn = sqlite3.connect("data/cascade.sqlite")
+    db_path = os.path.join("data", "cascade.sqlite")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     create_floor_plan_table(cursor=cursor)
     create_unit_table(cursor=cursor)
