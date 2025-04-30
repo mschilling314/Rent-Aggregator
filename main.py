@@ -2,11 +2,11 @@ import logging
 import os
 import sqlite3
 
-from Cascade import cascadeScraper
+from Buildings.Cascade import cascadeScraper
 
-import WPE.wpescraper as wpescraper
+import Buildings.WPE.wpescraper as wpescraper
 import analysis.analyze as analyze
-from OneChicago import scraper as onechicagoScraper 
+from Buildings.OneChicago import scraper as onechicagoScraper 
 
 logging.basicConfig(
     level=logging.INFO,  # Set minimum logging level to INFO
