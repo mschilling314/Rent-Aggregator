@@ -7,6 +7,7 @@ from Buildings.Cascade import cascadeScraper
 import Buildings.WPE.wpescraper as wpescraper
 import analysis.analyze as analyze
 from Buildings.OneChicago import scraper as onechicagoScraper 
+from Buildings.OneBennett import oneBennettScraper
 
 logging.basicConfig(
     level=logging.INFO,  # Set minimum logging level to INFO
@@ -46,7 +47,8 @@ def main():
 
     apartments = [{"name": "Wolf Point East", "scraper": wpescraper, "db_name": "wpe"},
                   {"name": "Cascade", "scraper": cascadeScraper, "db_name": "cascade"},
-                  {"name": "OneChicago", "scraper": onechicagoScraper, "db_name": "onechicago"}]
+                  {"name": "OneChicago", "scraper": onechicagoScraper, "db_name": "onechicago"},
+                  {"name": "OneBennett", "scraper": oneBennettScraper, "db_name": "onebennett"}]
     
     
     for apartment in apartments:

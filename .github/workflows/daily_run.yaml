@@ -34,6 +34,7 @@ jobs:
           git add data/wpe.sqlite
           git add data/onechicago.sqlite
           git add data/cascade.sqlite
+          git add data/onebennett.sqlite
           git add logs/app.log
           git commit -m "$(date) Run"
           git push origin main
