@@ -20,3 +20,9 @@ The `data` directory is where the databases live at the moment, they're simple S
 4. Add configuration to `apartments` dictionary in `main.py`
 5. Add `git add {database_name}` to `.github/workflows/daily_run.yaml`
 6. Open PR, ensure checks pass before merging
+
+## To-Do
+[ ] Add remaining buildings of interest
+[ ] Refactor for better concurrency/asynchronous calls with asyncio module
+[ ] Migrate data to different database for longevity
+[ ] Add documentation on how to set up
