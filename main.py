@@ -14,7 +14,7 @@ logging.basicConfig(
     handlers=[logging.FileHandler("logs/app.log", mode="a"), logging.StreamHandler()]  # Output to both a file and the console
 )
 
-def write_to_db(db_path: str):
+def analyze_for_price_change_or_novelty(db_path: str):
     """
     Write to the database, log significant price changes.
     """
@@ -54,7 +54,7 @@ def main():
         apartment["scraper"].scrape()
         logging.info(f"Writing to database and providing analysis for {apartment['name']}")
         db_path = os.path.join("data", f"{apartment['db_name']}.sqlite")
-        write_to_db(db_path=db_path)
+        analyze_for_price_change_or_novelty(db_path=db_path)
     
     logging.info("Completed execution of the app.")
 
