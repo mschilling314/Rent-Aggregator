@@ -22,7 +22,7 @@ The `data` directory is where the databases live at the moment, they're simple S
 6. Open PR, ensure checks pass before merging
 
 ## To-Do
-[ ] Add remaining buildings of interest
-[ ] Refactor for better concurrency/asynchronous calls with asyncio module
-[ ] Migrate data to different database for longevity
-[ ] Add documentation on how to set up
+-  Add remaining buildings of interest
+-  Refactor for better concurrency/asynchronous calls with asyncio module
+-  Migrate data to different database for longevity
+-  Add documentation on how to set up
