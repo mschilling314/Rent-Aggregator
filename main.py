@@ -1,10 +1,12 @@
 import logging
 import os
 import sqlite3
+
 from Cascade import cascadeScraper
 
 import WPE.wpescraper as wpescraper
 import analysis.analyze as analyze
+from OneChicago import scraper as onechicagoScraper 
 
 logging.basicConfig(
     level=logging.INFO,  # Set minimum logging level to INFO
@@ -43,7 +45,8 @@ def main():
     logging.info("Beginning execution of the app.")
 
     apartments = [{"name": "Wolf Point East", "scraper": wpescraper, "db_name": "wpe"},
-                  {"name": "Cascade", "scraper": cascadeScraper, "db_name": "cascade"}]
+                  {"name": "Cascade", "scraper": cascadeScraper, "db_name": "cascade"},
+                  {"name": "OneChicago", "scraper": onechicagoScraper, "db_name": "onechicago"}]
     
     
     for apartment in apartments:
