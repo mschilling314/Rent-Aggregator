@@ -1,7 +1,9 @@
+import io
 import logging
 import os
 import sqlite3
 import requests
+import fitz
 from bs4 import BeautifulSoup
 
 from DataClasses.FloorPlan import FloorPlan, create_floor_plan_table
@@ -49,6 +51,22 @@ def extract_tile_info(article: BeautifulSoup) -> dict:
      return {"beds": beds, "baths": baths, "price": price, "avail": avail, "link": link}
 
 
+def get_sq_ft(pdf_link: str) -> int:
+    sqft = 0
+    try:
+        resp = requests.get(pdf_link)
+        if resp.ok:
+            pdf_file = io.BytesIO(resp.content)
+            doc = fitz.open(stream=pdf_file, filetype="pdf")
+            for page in doc:
+                text = page.get_text()
+                if "FT2" in text:
+                    sqft = text.split(" FT2")[0].split("\n")[-1]
+    except:
+        logging.ERROR(f"Failed to retrieve floorplan at {pdf_link}")
+    return sqft
+
+
 def get_floorplan_info(link: str):
     res = {}
     try:
@@ -59,6 +77,7 @@ def get_floorplan_info(link: str):
               floorplan_href = soup.find("a", string="DOWNLOAD FLOORPLAN")['href']
               res["floorplan_link"] = f"https://www.relatedrentals.com{floorplan_href}"
               res["floorplan_id"] = floorplan_href.split("/")[-1].split(".")[0].split("_")[-1]
+              res["sqft"] = get_sq_ft(res["floorplan_link"])
     except:
          logging.ERROR(f"Couldn't access {link} on OneBennett")
     return res
@@ -73,7 +92,7 @@ def get_info_from_tiles(tiles: BeautifulSoup) -> tuple[list[Unit], list[FloorPla
         if other_info:
             info = info | other_info
         units.append(Unit(info["unit"], floor_plan_id=int(info["floorplan_id"]), price=info["price"], date_available=info["avail"]))
-        floor_plans.append(FloorPlan(id=int(info["floorplan_id"]), common_name=info["floorplan_id"], beds=info["beds"], baths=info["baths"], sq_ft=0, img_url=info["floorplan_link"]))
+        floor_plans.append(FloorPlan(id=int(info["floorplan_id"]), common_name=info["floorplan_id"], beds=info["beds"], baths=info["baths"], sq_ft=info["sqft"], img_url=info["floorplan_link"]))
     
     return units, floor_plans
 
