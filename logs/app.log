@@ -561,3 +561,26 @@ Scraping website for OneChicago
 Scraping website for OneBennett
 2025-05-01 01:24:30,734 - INFO - Writing to database and providing analysis for OneBennett
 2025-05-01 01:24:30,753 - INFO - Completed execution of the app.
+2025-05-02 01:16:53,782 - INFO - Beginning execution of the app.
+2025-05-02 01:16:53,782 - INFO - 
+Scraping website for Wolf Point East
+2025-05-02 01:17:15,701 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-05-02 01:17:15,731 - INFO - Price drops detected for the following units: 5706, 1001, 1401, 4412, 5112, 5212, 1104
+2025-05-02 01:17:15,743 - INFO - Price increases detected for these units: 2214, 907, 1307, 2107, 3207, 3507, 3607, 3707, 2911, 2711, 3311, 408, 4403, 4903, 5203, 1412, 3912, 4711, 708, 1208, 2408, 3008, 3608, 710, 1310, 2106, 2406, 3206, 706, 1506, 1906, 3906, 506, 4806, 2202, 2009, 4805, 3112
+2025-05-02 01:17:15,749 - INFO - Units new to the market: 3909
+2025-05-02 01:17:15,749 - INFO - 
+Scraping website for Cascade
+2025-05-02 01:17:16,093 - INFO - Writing to database and providing analysis for Cascade
+2025-05-02 01:17:16,112 - INFO - Price increases detected for these units: 1902, 2202, 3305, 1305, 3606, 1306, 0812, 2913, 2713, 1913, 1515
+2025-05-02 01:17:16,114 - INFO - Units new to the market: 3410
+2025-05-02 01:17:16,114 - INFO - 
+Scraping website for OneChicago
+2025-05-02 01:17:42,374 - INFO - Writing to database and providing analysis for OneChicago
+2025-05-02 01:17:42,384 - INFO - Price drops detected for the following units: 1604
+2025-05-02 01:17:42,392 - INFO - Price increases detected for these units: 2402, 2904, 2806, 3007, 1908, 0616, 0706, 4605, 4311
+2025-05-02 01:17:42,394 - INFO - Units new to the market: 2103
+2025-05-02 01:17:42,394 - INFO - 
+Scraping website for OneBennett
+2025-05-02 01:18:04,462 - INFO - Writing to database and providing analysis for OneBennett
+2025-05-02 01:18:04,482 - INFO - Units new to the market: 3503, 1201
+2025-05-02 01:18:04,482 - INFO - Completed execution of the app.
