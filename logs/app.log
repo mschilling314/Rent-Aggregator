@@ -645,3 +645,26 @@ Scraping website for OneBennett
 2025-05-05 01:21:13,663 - INFO - Writing to database and providing analysis for OneBennett
 2025-05-05 01:21:13,683 - INFO - Units new to the market: 2401
 2025-05-05 01:21:13,683 - INFO - Completed execution of the app.
+2025-05-06 01:17:33,352 - INFO - Beginning execution of the app.
+2025-05-06 01:17:33,352 - INFO - 
+Scraping website for Wolf Point East
+2025-05-06 01:17:48,552 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-05-06 01:17:48,621 - INFO - Price drops detected for the following units: 907, 1307, 3507, 2107, 3607, 3707, 3207, 2911, 2711, 2214, 4903, 5203
+2025-05-06 01:17:48,633 - INFO - Price increases detected for these units: 5303, 5503, 2304, 3104, 3604, 1001, 1401, 701, 3601, 1901, 4911, 1412, 708, 1208, 2408, 3008, 3608, 710, 1310, 3909, 2106, 2406, 3206, 706, 1506, 1906, 3906, 506, 4806, 5106, 4805, 2009, 4407, 3112, 504, 1104, 1504, 3704
+2025-05-06 01:17:48,639 - INFO - Units new to the market: 3407, 611, 4107, 2012, 804
+2025-05-06 01:17:48,639 - INFO - 
+Scraping website for Cascade
+2025-05-06 01:17:49,235 - INFO - Writing to database and providing analysis for Cascade
+2025-05-06 01:17:49,245 - INFO - Price drops detected for the following units: 1305, 2309, 2610, 1515
+2025-05-06 01:17:49,253 - INFO - Price increases detected for these units: 3606, 1306, 0812, 3112, 2913, 2713, 1913
+2025-05-06 01:17:49,256 - INFO - Units new to the market: 2215
+2025-05-06 01:17:49,256 - INFO - 
+Scraping website for OneChicago
+2025-05-06 01:18:24,784 - INFO - Writing to database and providing analysis for OneChicago
+2025-05-06 01:18:24,803 - INFO - Price increases detected for these units: 2402, 2904, 2806, 3007, 2708, 3703, 2109, 0303, 0706, 2809, 3709
+2025-05-06 01:18:24,805 - INFO - Units new to the market: 3105
+2025-05-06 01:18:24,805 - INFO - 
+Scraping website for OneBennett
+2025-05-06 01:18:51,181 - INFO - Writing to database and providing analysis for OneBennett
+2025-05-06 01:18:51,199 - INFO - Price increases detected for these units: 3503
+2025-05-06 01:18:51,201 - INFO - Completed execution of the app.
