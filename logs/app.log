@@ -712,3 +712,25 @@ Scraping website for OneBennett
 2025-05-08 01:19:35,303 - INFO - Writing to database and providing analysis for OneBennett
 2025-05-08 01:19:35,313 - INFO - Price drops detected for the following units: 1706
 2025-05-08 01:19:35,323 - INFO - Completed execution of the app.
+2025-05-09 01:17:43,650 - INFO - Beginning execution of the app.
+2025-05-09 01:17:43,650 - INFO - 
+Scraping website for Wolf Point East
+2025-05-09 01:18:00,440 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-05-09 01:18:00,469 - INFO - Price drops detected for the following units: 907, 1307, 3507, 2107, 3407, 3607, 3707, 3207, 1401, 611, 2214, 2814, 2911, 2711, 4911, 708, 1208, 2408, 3008, 3608, 1412, 5203, 710, 1310, 2106, 2406, 3206, 706, 1506, 1906, 3906, 506, 2012, 3112, 4805, 2009, 4806, 5106
+2025-05-09 01:18:00,482 - INFO - Price increases detected for these units: 5202, 2208, 1812
+2025-05-09 01:18:00,488 - INFO - 
+Scraping website for Cascade
+2025-05-09 01:18:00,782 - INFO - Writing to database and providing analysis for Cascade
+2025-05-09 01:18:00,792 - INFO - Price drops detected for the following units: 2903, 2904, 3606, 1306, 2406, 2610, 0810, 3011, 0812, 2913, 2713, 1913
+2025-05-09 01:18:00,800 - INFO - Price increases detected for these units: 2101, 2501, 1901, 1305, 3208, 0808, 0608, 2309, 0709
+2025-05-09 01:18:00,802 - INFO - Units new to the market: 2102
+2025-05-09 01:18:00,803 - INFO - 
+Scraping website for OneChicago
+2025-05-09 01:18:21,219 - INFO - Writing to database and providing analysis for OneChicago
+2025-05-09 01:18:21,229 - INFO - Price drops detected for the following units: 2402
+2025-05-09 01:18:21,237 - INFO - Price increases detected for these units: 3302, 2303, 4504, 4605, 2308, 4311
+2025-05-09 01:18:21,239 - INFO - Units new to the market: 0310
+2025-05-09 01:18:21,239 - INFO - 
+Scraping website for OneBennett
+2025-05-09 01:18:44,178 - INFO - Writing to database and providing analysis for OneBennett
+2025-05-09 01:18:44,263 - INFO - Completed execution of the app.
