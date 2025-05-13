@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 import logging
+import asyncio
+import aiohttp
 
 from DataClasses.FloorPlan import FloorPlan, create_floor_plan_table
 from DataClasses.Unit import Unit, create_unit_table
@@ -30,7 +32,7 @@ def grab_webpage(url: str="https://liveonechicago.com/floor-plans"):
         if resp.ok:
             return BeautifulSoup(resp.text, 'html.parser')
     except:
-        logging.ERROR("Failed to get OneChicago Website.")
+        logging.error("Failed to get OneChicago Website.")
     
 def get_floorplans(html: BeautifulSoup) -> list[FloorPlan]:
     rows = html.find("tbody", class_="unit-list__table-body").findAll("tr", class_="unit-list__row")
@@ -64,24 +66,29 @@ def _parse_unit(floorplan: int, unit_page: BeautifulSoup) -> Unit:
     return Unit(unit_number=unit, floor_plan_id=floorplan, price=price, date_available=avail)
 
 
-def get_units(floorplans: list[FloorPlan]) -> list[Unit]:
-    res = []
-    for floorplan in floorplans:
-        url = f"https://liveonechicago.com/floor-plans?view=availability&id={floorplan.name}"
-        try:
-            resp = requests.get(url)
-            if resp.ok:
-                soup = BeautifulSoup(resp.text, "html.parser")
-                res.append(_parse_unit(floorplan.floor_plan_id, soup))
-        except:
-            logging.ERROR(f"Broken web request for floorplan {floorplan.name}")
-    return res
+async def fetch_and_parse_unit(url: str, session: aiohttp.ClientSession, floor_plan_id: int) -> Unit:
+    async with session.get(url) as resp:
+        if resp.status == 200:
+            text = await resp.text()
+            soup = BeautifulSoup(text, "html.parser")
+            return _parse_unit(floor_plan_id, soup)
+        else:
+            logging.error(f"Link did not work for {url}")
 
 
-def scrape() -> None:
+async def get_units(floorplans: list[FloorPlan]) -> list[Unit]:
+    tasks = []
+    async with aiohttp.ClientSession() as session:
+        for floorplan in floorplans:
+            url = f"https://liveonechicago.com/floor-plans?view=availability&id={floorplan.name}"
+            tasks.append(fetch_and_parse_unit(url, session, floorplan.floor_plan_id))
+        return await asyncio.gather(*tasks)
+
+
+async def scrape() -> None:
     soup = grab_webpage()
     floorplans = get_floorplans(soup)
-    units = get_units(floorplans)
+    units = await get_units(floorplans)
 
     db_path = os.path.join("data", "onechicago.sqlite")
     conn = sqlite3.connect(db_path)
@@ -96,3 +103,7 @@ def scrape() -> None:
     
     conn.commit()
     conn.close()
+
+
+if __name__=="__main__":
+    asyncio.run(scrape())

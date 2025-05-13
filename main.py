@@ -1,6 +1,7 @@
 import logging
 import os
 import sqlite3
+import asyncio
 
 from Buildings.Cascade import cascadeScraper
 
@@ -39,7 +40,7 @@ def analyze_for_price_change_or_novelty(db_path: str):
 
 
 
-def main():
+async def main():
     """
     Function executed as primary entrypoint into program.
     """
@@ -52,15 +53,19 @@ def main():
     
     
     for apartment in apartments:
-        logging.info(f"\nScraping website for {apartment['name']}")
-        apartment["scraper"].scrape()
-        logging.info(f"Writing to database and providing analysis for {apartment['name']}")
-        db_path = os.path.join("data", f"{apartment['db_name']}.sqlite")
-        analyze_for_price_change_or_novelty(db_path=db_path)
+        try:
+            logging.info(f"Scraping website for {apartment['name']}")
+            await apartment["scraper"].scrape()
+            logging.info(f"Writing to database and providing analysis for {apartment['name']}")
+            db_path = os.path.join("data", f"{apartment['db_name']}.sqlite")
+            analyze_for_price_change_or_novelty(db_path=db_path)
+        except Exception as e:
+            logging.error(f"Error while processing {apartment['name']}: {e}")
+
     
     logging.info("Completed execution of the app.")
 
 
 if __name__=="__main__":
-    main()
+    asyncio.run(main())
     

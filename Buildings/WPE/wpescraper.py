@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import sqlite3
 from typing import Callable
 import concurrent.futures
+import asyncio
 
 from DataClasses.Unit import Unit, create_unit_table
 from DataClasses.FloorPlan import FloorPlan, create_floor_plan_table
@@ -99,7 +100,7 @@ def get_units(floor_plan_id: int) -> list[Unit]:
 
 
 
-def scrape():
+async def scrape():
     """
     Scrapes the rentwpe.com site, puts results in two tables in SQLite DB for WPE.
     """
