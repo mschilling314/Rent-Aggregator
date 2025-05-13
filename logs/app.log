@@ -794,3 +794,25 @@ Scraping website for OneChicago
 Scraping website for OneBennett
 2025-05-12 01:21:45,184 - INFO - Writing to database and providing analysis for OneBennett
 2025-05-12 01:21:45,204 - INFO - Completed execution of the app.
+2025-05-13 01:19:08,476 - INFO - Beginning execution of the app.
+2025-05-13 01:19:08,476 - INFO - 
+Scraping website for Wolf Point East
+2025-05-13 01:19:22,514 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-05-13 01:19:22,544 - INFO - Price drops detected for the following units: 710, 1310, 2106, 2406, 3206, 706, 1506, 1906, 3906, 506
+2025-05-13 01:19:22,556 - INFO - Price increases detected for these units: 2711, 611, 907, 3507, 2107, 3407, 3607, 3707, 3207, 1814, 2414, 2214, 2814, 5203, 1412, 1812, 4911, 5011, 708, 1208, 2208, 2408, 3008, 3608, 4806, 5106, 2009, 2012, 3112, 4805
+2025-05-13 01:19:22,563 - INFO - Units new to the market: 3111, 5008, 714, 3614, 3712, 3009
+2025-05-13 01:19:22,563 - INFO - 
+Scraping website for Cascade
+2025-05-13 01:19:23,206 - INFO - Writing to database and providing analysis for Cascade
+2025-05-13 01:19:23,217 - INFO - Price drops detected for the following units: 1305, 2309, 2610, 2913, 2713
+2025-05-13 01:19:23,227 - INFO - Units new to the market: 2707
+2025-05-13 01:19:23,227 - INFO - 
+Scraping website for OneChicago
+2025-05-13 01:19:53,618 - INFO - Writing to database and providing analysis for OneChicago
+2025-05-13 01:19:53,637 - INFO - Price increases detected for these units: 0412, 0502, 0310, 0713, 2103, 4504, 4605, 2308, 4311
+2025-05-13 01:19:53,639 - INFO - Units new to the market: 2207, 1908
+2025-05-13 01:19:53,639 - INFO - 
+Scraping website for OneBennett
+2025-05-13 01:20:21,062 - INFO - Writing to database and providing analysis for OneBennett
+2025-05-13 01:20:21,082 - INFO - Units new to the market: 3204
+2025-05-13 01:20:21,082 - INFO - Completed execution of the app.
