@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 import logging
+import asyncio
 
 from DataClasses.FloorPlan import FloorPlan, create_floor_plan_table
 from DataClasses.Unit import Unit, create_unit_table
@@ -14,7 +15,7 @@ def grab_webpage(url: str="https://cascadeapartments.com/availability") -> Beaut
         if resp.ok:
             return BeautifulSoup(resp.text, "html.parser")
     except:
-        logging.ERROR("Failed to get Cascade Apartments website.")
+        logging.error("Failed to get Cascade Apartments website.")
         # raise Exception("Website get failed.")
     
 
@@ -55,7 +56,7 @@ def get_unit(html: BeautifulSoup) -> list[Unit]:
     return res
 
 
-def scrape() -> None:
+async def scrape() -> None:
     soup = grab_webpage()
     floorplans = get_floorplans(soup)
     units = get_unit(soup)

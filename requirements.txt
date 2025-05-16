@@ -5,3 +5,4 @@ pandas
 pandasql
 matplotlib
 pymupdf
+aiohttp
