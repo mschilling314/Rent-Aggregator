@@ -25,3 +25,6 @@ The `data` directory is where the databases live at the moment, they're simple S
 -  Add remaining buildings of interest
 -  Migrate data to different database for longevity
 -  Add documentation on how to set up
+-  Expose APIs to access data outside of SQLite Reader
+-  Migrate to AWS for longevity
+-  Build a front-end
