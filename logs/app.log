@@ -880,3 +880,20 @@ Scraping website for OneChicago
 Scraping website for OneBennett
 2025-05-16 01:20:10,992 - INFO - Writing to database and providing analysis for OneBennett
 2025-05-16 01:20:11,015 - INFO - Completed execution of the app.
+2025-05-17 01:17:13,152 - INFO - Beginning execution of the app.
+2025-05-17 01:17:13,152 - INFO - Scraping website for Wolf Point East
+2025-05-17 01:17:28,115 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-05-17 01:17:28,146 - INFO - Price drops detected for the following units: 2304, 3104, 3604, 701, 5303, 714, 1314, 1814, 2414, 2214, 2814, 3614, 907, 3507, 2107, 3407, 3607, 3707, 3207, 611, 2711, 3111, 5008, 4107, 5112, 5411, 4911, 5011, 2408, 2208, 2808, 2908, 3608, 1412, 1812, 3712, 4806, 5106, 2009, 2809, 4805, 2012, 3112, 4407, 2113, 804, 1504, 604
+2025-05-17 01:17:28,159 - INFO - Price increases detected for these units: 5503, 2911, 5308, 5212, 1308, 3909, 1510, 2106, 2406, 2606, 3206, 1506, 706, 1906, 3906, 3702, 704
+2025-05-17 01:17:28,165 - INFO - Units new to the market: 3505, 1604
+2025-05-17 01:17:28,166 - INFO - Scraping website for Cascade
+2025-05-17 01:17:28,553 - INFO - Writing to database and providing analysis for Cascade
+2025-05-17 01:17:28,564 - INFO - Price drops detected for the following units: 3606, 1306, 2406, 2913, 2713, 1913
+2025-05-17 01:17:28,572 - INFO - Price increases detected for these units: 2101, 2501, 1601, 2102, 2903, 2904, 1305, 2505, 3505, 2707, 3208, 0808, 0608, 2708, 0810, 3011, 1915
+2025-05-17 01:17:28,574 - INFO - Units new to the market: 2704, 1604
+2025-05-17 01:17:28,574 - INFO - Scraping website for OneChicago
+2025-05-17 01:17:30,110 - ERROR - Error while processing OneChicago: could not convert string to float: 'Convertible'
+2025-05-17 01:17:30,110 - INFO - Scraping website for OneBennett
+2025-05-17 01:17:52,538 - INFO - Writing to database and providing analysis for OneBennett
+2025-05-17 01:17:52,558 - INFO - Units new to the market: 0506, 2806
+2025-05-17 01:17:52,558 - INFO - Completed execution of the app.
