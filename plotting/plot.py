@@ -15,5 +15,6 @@ def graph_price_per_day(df: pd.DataFrame, floor_plan_name: str="A21", xaxis: str
     plt.xlabel(xaxis)
     plt.ylabel(yaxis)
     plt.title(title)
+    plt.xticks(rotation=90)
 
     plt.show()
