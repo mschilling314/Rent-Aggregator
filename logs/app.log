@@ -1186,3 +1186,16 @@ Scraping website for OneBennett
 2025-06-06 01:19:46,904 - INFO - Scraping website for OneBennett
 2025-06-06 01:20:08,902 - INFO - Writing to database and providing analysis for OneBennett
 2025-06-06 01:20:08,924 - INFO - Completed execution of the app.
+2025-06-07 01:19:01,693 - INFO - Beginning execution of the app.
+2025-06-07 01:19:01,693 - INFO - Scraping website for Wolf Point East
+2025-06-07 01:19:17,819 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-06-07 01:19:17,852 - INFO - Price drops detected for the following units: 5503, 814, 1814, 907, 2107, 3407, 3607, 3207, 1211, 1711, 1111, 2411, 3011, 4503, 1906
+2025-06-07 01:19:17,877 - INFO - Units new to the market: 2304, 3106, 3303, 4407
+2025-06-07 01:19:17,878 - INFO - Scraping website for Cascade
+2025-06-07 01:19:18,362 - INFO - Writing to database and providing analysis for Cascade
+2025-06-07 01:19:18,385 - INFO - Units new to the market: 1505
+2025-06-07 01:19:18,385 - INFO - Scraping website for OneChicago
+2025-06-07 01:19:19,903 - ERROR - Error while processing OneChicago: could not convert string to float: 'Convertible'
+2025-06-07 01:19:19,903 - INFO - Scraping website for OneBennett
+2025-06-07 01:19:34,738 - INFO - Writing to database and providing analysis for OneBennett
+2025-06-07 01:19:34,759 - INFO - Completed execution of the app.
