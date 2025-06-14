@@ -1279,3 +1279,18 @@ Scraping website for OneBennett
 2025-06-13 01:21:34,560 - INFO - Scraping website for OneBennett
 2025-06-13 01:22:00,067 - INFO - Writing to database and providing analysis for OneBennett
 2025-06-13 01:22:00,089 - INFO - Completed execution of the app.
+2025-06-14 01:18:01,083 - INFO - Beginning execution of the app.
+2025-06-14 01:18:01,083 - INFO - Scraping website for Wolf Point East
+2025-06-14 01:18:18,439 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-06-14 01:18:18,493 - INFO - Price increases detected for these units: 1308, 3306
+2025-06-14 01:18:18,501 - INFO - Units new to the market: 3908
+2025-06-14 01:18:18,502 - INFO - Scraping website for Cascade
+2025-06-14 01:18:18,877 - INFO - Writing to database and providing analysis for Cascade
+2025-06-14 01:18:18,898 - INFO - Price increases detected for these units: 2707
+2025-06-14 01:18:18,901 - INFO - Scraping website for OneChicago
+2025-06-14 01:18:36,945 - INFO - Writing to database and providing analysis for OneChicago
+2025-06-14 01:18:36,965 - INFO - Price increases detected for these units: 3605, 3703, 3905, 3602, 3406, 0602, 0515, 0516, 4701, 4504, 4006, 3407, 3508, 4311
+2025-06-14 01:18:36,968 - INFO - Units new to the market: 2903, 2904, 3501, 3003
+2025-06-14 01:18:36,968 - INFO - Scraping website for OneBennett
+2025-06-14 01:18:57,424 - INFO - Writing to database and providing analysis for OneBennett
+2025-06-14 01:18:57,447 - INFO - Completed execution of the app.
