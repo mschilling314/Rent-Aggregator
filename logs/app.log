@@ -1418,3 +1418,16 @@ Scraping website for OneBennett
 2025-06-22 01:28:51,165 - INFO - Writing to database and providing analysis for OneBennett
 2025-06-22 01:28:51,187 - INFO - Units new to the market: 2806
 2025-06-22 01:28:51,188 - INFO - Completed execution of the app.
+2025-06-23 01:25:36,663 - INFO - Beginning execution of the app.
+2025-06-23 01:25:36,663 - INFO - Scraping website for Wolf Point East
+2025-06-23 01:25:51,894 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-06-23 01:25:51,927 - INFO - Price drops detected for the following units: 3604
+2025-06-23 01:25:51,949 - INFO - Scraping website for Cascade
+2025-06-23 01:25:52,181 - ERROR - Error while processing Cascade: 'NoneType' object has no attribute 'findAll'
+2025-06-23 01:25:52,181 - INFO - Scraping website for OneChicago
+2025-06-23 01:26:03,831 - INFO - Writing to database and providing analysis for OneChicago
+2025-06-23 01:26:03,843 - INFO - Price drops detected for the following units: 2407, 0515, 0516, 4401, 2604, 4504, 3407, 1808
+2025-06-23 01:26:03,851 - INFO - Price increases detected for these units: 0610, 0514
+2025-06-23 01:26:03,854 - INFO - Scraping website for OneBennett
+2025-06-23 01:26:18,061 - INFO - Writing to database and providing analysis for OneBennett
+2025-06-23 01:26:18,083 - INFO - Completed execution of the app.
