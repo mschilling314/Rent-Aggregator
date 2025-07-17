@@ -45,7 +45,7 @@ def get_floorplans(html: BeautifulSoup) -> list[FloorPlan]:
         beds = rooms.split("/")[0].strip()
         if beds == "Studio":
             beds = 0.0
-        elif beds == "Junior 1 Bed":
+        elif beds == "Junior 1 Bed" or beds == "Convertible":
             beds = 0.5
         else:
             beds = float(beds.split(" ")[0])
