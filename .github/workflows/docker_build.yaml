@@ -4,17 +4,18 @@ on: workflow_dispatch
 
 jobs:
     build-image:
-        runs-on: ubuntu-latest
-        permissions:
-            packages: write
-        steps:
-            - uses: actions/checkout@v3
-
-            - name: Log into GitHub Container Registry
-              run: echo "${{ secrets.REPO_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            - name: Build and push image
-              run: |
-                docker build -t ghcr.io/${{ github.repository_owner }}/rent-aggregator:latest .
-                docker push ghcr.io/$${{ github.repository_owner }}/rent-aggregator:latest
-            
+      runs-on: ubuntu-latest
+      permissions:
+        packages: write
+        contents: read
+      steps:
+        - uses: actions/checkout@v3
+  
+        - name: Log in to GitHub Container Registry
+          run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+  
+        - name: Build and push image
+          run: |
+            docker build -t ghcr.io/${{ github.repository_owner }}/rent-aggregator:latest .
+            docker push ghcr.io/${{ github.repository_owner }}/rent-aggregator:latest
+  
