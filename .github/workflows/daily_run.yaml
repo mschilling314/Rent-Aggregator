@@ -14,6 +14,10 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Run daily at midnight (adjust as needed)
 
+permissions:
+  contents: write
+  packages: read
+
 
 jobs:
   scraping:
@@ -22,26 +26,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+      - name: Log into GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Pull prebuilt image
+        run: docker pull ghcr.io/${{ github.repository_owner }}/rent-aggregator:latest
 
-      - name: Run program
+      - name: Run scraper
         run: |
-          python main.py
+          mkdir -p data logs
+          docker run --rm \
+            -v ${{ github.workspace }}/data:/app/data \
+            -v ${{ github.workspace }}/logs:/app/logs \
+            ghcr.io/${{ github.repository_owner }}/rent-aggregator:latest
 
       - name: Commit and push changes
-        env:
-            GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
         run: |
           git config user.email "mschilling52019@gmail.com"
           git config user.name "MattBot"
-          git add data/*.sqlite
+          git add data/*.sqlite || echo "No data updates"
           git add logs/app.log
           git commit -m "$(date) Run"
           git push origin main

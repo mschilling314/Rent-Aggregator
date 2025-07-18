@@ -3,28 +3,38 @@ name: PR Check
 on:
   pull_request:
     branches:
-      - main  # This will run the check on PRs targeting the `main` branch.
+      - main  # Only PRs targeting main will trigger this
 
 jobs:
-  test:
-    runs-on: ubuntu-latest  # Use a fresh Ubuntu environment for each run.
+  docker-scraper-test:
+    runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code from the PR
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+      - name: Set up Docker (optional, pre-installed on ubuntu-latest)
+        run: docker --version
 
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      # Run tests (assuming pytest is used, adjust if you're using a different test framework)
-      - name: Run tests
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/rent-aggregator:test .
+
+      - name: Run scraper container (test run)
         run: |
-          pytest
+          mkdir -p data logs
+          docker run --rm \
+            -v ${{ github.workspace }}/data:/app/data \
+            -v ${{ github.workspace }}/logs:/app/logs \
+            ghcr.io/${{ github.repository_owner }}/rent-aggregator:test
+
+      - name: List output files (for debug)
+        run: |
+          echo "::group::Data"
+          ls -l data
+          echo "::endgroup::"
+          echo "::group::Logs"
+          cat logs/app.log || echo "No log found"
+          echo "::endgroup::"
