@@ -2193,3 +2193,13 @@ Scraping website for OneBennett
 2025-08-17 01:28:08,075 - INFO - Scraping website for OneBennett
 2025-08-17 01:28:18,604 - INFO - Writing to database and providing analysis for OneBennett
 2025-08-17 01:28:18,622 - INFO - Completed execution of the app.
+2025-08-18 01:26:40,330 - INFO - Beginning execution of the app.
+2025-08-18 01:26:40,330 - INFO - Scraping website for Wolf Point East
+2025-08-18 01:26:55,294 - INFO - Writing to database and providing analysis for Wolf Point East
+2025-08-18 01:26:55,400 - INFO - Scraping website for Cascade
+2025-08-18 01:26:55,819 - ERROR - Error while processing Cascade: 'NoneType' object has no attribute 'findAll'
+2025-08-18 01:26:55,819 - INFO - Scraping website for OneChicago
+2025-08-18 01:27:18,388 - INFO - Writing to database and providing analysis for OneChicago
+2025-08-18 01:27:18,411 - INFO - Scraping website for OneBennett
+2025-08-18 01:27:29,147 - INFO - Writing to database and providing analysis for OneBennett
+2025-08-18 01:27:29,166 - INFO - Completed execution of the app.
