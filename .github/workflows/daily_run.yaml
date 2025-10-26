@@ -11,8 +11,8 @@ on:
         description: 'Environment to deploy'
         required: false
         default: 'staging'
-  schedule:
-    - cron: '0 0 * * *'  # Run daily at midnight (adjust as needed)
+  # schedule:
+  #   - cron: '0 0 * * *'  # Run daily at midnight (adjust as needed)
 
 permissions:
   contents: write
